@@ -7,11 +7,13 @@ function DestinationsList() {
 DestinationsList.prototype.findLocation = function (userCountry) {
 	for (let i = 0; i < this.locations.length; i++) {
 		if (this.locations[i].userCountry == userCountry) {
-			$('.userResults').text(
-				'<li>' + destinationsList.locations[i].userCountry + '</li>',
-				'<li>' + destinationsList.locations[i].userCity + '</li>',
-				'<li>' + destinationsList.locations[i].userDate + '</li>'
-			);
+			$('.userResults')
+				.empty()
+				.append(
+					'<li>' + destinationsList.locations[i].userCountry + '</li>',
+					'<li>' + destinationsList.locations[i].userCity + '</li>',
+					'<li>' + destinationsList.locations[i].userDate + '</li>'
+				);
 		}
 	}
 };
@@ -40,6 +42,7 @@ let q = 0;
 
 // Front End Logic
 $(document).ready(function () {
+	// Add items
 	$('#formOne').submit(function () {
 		event.preventDefault();
 		let userCountry = $('#userCountry').val();
@@ -69,12 +72,30 @@ $(document).ready(function () {
 			$('.userResults').append('<img src="img/' + userCountry + '.jpg">');
 		}
 
-		q = q += 1;
+		attachLocationListeners();
+
+		q = q + 1;
 	});
 
+	// Search
 	$('#formTwo').submit(function () {
 		event.preventDefault();
 		let locationToFind = $('#searchCountry').val();
 		destinationsList.findLocation(locationToFind);
 	});
+
+	function attachLocationListeners() {
+		$('ul.userResults').on('click', 'li', function () {
+			let newUserCountry = prompt('New country: ');
+			let newUserCity = prompt('New city: ');
+			let newUserDate = prompt('New date: ');
+
+			console.log(destinationsList.locations[q - 1].userCountry);
+			console.log(destinationsList.locations[q - 1].userCity);
+			console.log(destinationsList.locations[q - 1].userDate);
+			delete destinationsList.locations[q - 1].userCountry;
+			delete destinationsList.locations[q - 1].userCity;
+			delete destinationsList.locations[q - 1].userDate;
+		});
+	}
 });
