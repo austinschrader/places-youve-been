@@ -2,30 +2,19 @@
 // Initialize Places() object
 function DestinationsList() {
 	this.locations = [];
-	// this.currentId = 0;
 }
 
 DestinationsList.prototype.findLocation = function (userCountry) {
 	for (let i = 0; i < this.locations.length; i++) {
 		if (this.locations[i].userCountry == userCountry) {
-			$('.userResults').append(
-				'<li>' + destinationsList.locations[i].userCountry + '</li>'
-			);
-			$('.userResults').append(
-				'<li>' + destinationsList.locations[i].userCity + '</li>'
-			);
-			$('.userResults').append(
+			$('.userResults').text(
+				'<li>' + destinationsList.locations[i].userCountry + '</li>',
+				'<li>' + destinationsList.locations[i].userCity + '</li>',
 				'<li>' + destinationsList.locations[i].userDate + '</li>'
 			);
 		}
 	}
 };
-
-// Assign each location an ID
-// DestinationsList.prototype.assignId = function () {
-// 	this.currentId += 1;
-// 	return this.currentId;
-// };
 
 // Add a Location
 DestinationsList.prototype.addLocation = function (location) {
@@ -62,11 +51,19 @@ $(document).ready(function () {
 		destinationsList.addLocation(location);
 
 		// Append location
-		$('.userResults').append(
-			'<li>' + destinationsList.locations[q].userCountry + '</li>',
-			'<li>' + destinationsList.locations[q].userCity + '</li>',
-			'<li>' + destinationsList.locations[q].userDate + '</li>'
-		);
+		$('.userResults')
+			.empty()
+			.append(
+				'<li>' +
+					destinationsList.locations[q].userCountry +
+					'</li>' +
+					'<li>' +
+					destinationsList.locations[q].userCity +
+					'</li>' +
+					'<li>' +
+					destinationsList.locations[q].userDate +
+					'</li>'
+			);
 
 		if (userCountry != '') {
 			$('.userResults').append('<img src="img/' + userCountry + '.jpg">');
