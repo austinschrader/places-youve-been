@@ -2,6 +2,7 @@
 // Initialize Places() object
 function DestinationsList() {
 	this.locations = [];
+	this.currentId = 0;
 }
 
 // Add a Location
@@ -10,14 +11,14 @@ DestinationsList.prototype.addLocation = function (location) {
 };
 
 // Business Logic for Locations
-function Location(country, city, date) {
-	this.country = country;
-	this.city = city;
-	this.date = date;
+function Location(userCountry, userCity, userDate) {
+	this.userCountry = userCountry;
+	this.userCity = userCity;
+	this.userDate = userDate;
 }
 
-Location.prototype.country = function () {
-	return this.city + ' , ' + this.country;
+Location.prototype.userCountry = function () {
+	return this.userCity + ' , ' + this.userCountry;
 };
 
 // Globally initialize destinationsList
@@ -34,19 +35,19 @@ $(document).ready(function () {
 		// Initialize location object and push location to destinationsList
 		let location = new Location(userCountry, userCity, userDate);
 		destinationsList.addLocation(location);
-		console.log(destinationsList);
-		console.log('The variable this is equal to : ');
-		console.log(this);
+		// console.log(destinationsList);
+		// console.log('The variable this is equal to : ');
+		// console.log(this);
 
 		// Append location
 		$('.userResults').append(
-			'<li>' + destinationsList.locations[0].country + '</li>'
+			'<li>' + destinationsList.locations[0].userCountry + '</li>'
 		);
 		$('.userResults').append(
-			'<li>' + destinationsList.locations[0].city + '</li>'
+			'<li>' + destinationsList.locations[0].userCity + '</li>'
 		);
 		$('.userResults').append(
-			'<li>' + destinationsList.locations[0].date + '</li>'
+			'<li>' + destinationsList.locations[0].userDate + '</li>'
 		);
 	});
 });
