@@ -1,11 +1,11 @@
 // Back End Logic
 // Initialize Places() object
-function Destinations() {
+function DestinationsList() {
 	this.locations = [];
 }
 
 // Add a Location
-Destinations.prototype.addLocation = function (location) {
+DestinationsList.prototype.addLocation = function (location) {
 	this.locations.push(location);
 };
 
@@ -28,11 +28,19 @@ $(document).ready(function () {
 		let userCity = $('#userCity').val();
 		let userDate = $('#userDate').val();
 
-		console.log(userCountry, userCity, userDate);
+		// Initialize objects & push user input to those objects
+		let destinationsList = new DestinationsList();
+		let location = new Location(userCountry, userCity, userDate);
+		destinationsList.addLocation(location);
 
-		$('.userResults').append('<li>' + userCountry + '</li>');
-		$('.userResults').append('<li>' + userCity + '</li>');
-		$('.userResults').append('<li>' + userDate + '</li>');
-		// numberTo(userInput);
+		$('.userResults').append(
+			'<li>' + destinationsList.locations[0].country + '</li>'
+		);
+		$('.userResults').append(
+			'<li>' + destinationsList.locations[0].city + '</li>'
+		);
+		$('.userResults').append(
+			'<li>' + destinationsList.locations[0].date + '</li>'
+		);
 	});
 });
