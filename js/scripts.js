@@ -63,12 +63,8 @@ $(document).ready(function () {
 
 		// Append location
 		$('.userResults').append(
-			'<li>' + destinationsList.locations[q].userCountry + '</li>'
-		);
-		$('.userResults').append(
-			'<li>' + destinationsList.locations[q].userCity + '</li>'
-		);
-		$('.userResults').append(
+			'<li>' + destinationsList.locations[q].userCountry + '</li>',
+			'<li>' + destinationsList.locations[q].userCity + '</li>',
 			'<li>' + destinationsList.locations[q].userDate + '</li>'
 		);
 
