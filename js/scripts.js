@@ -20,6 +20,9 @@ Location.prototype.country = function () {
 	return this.city + ' , ' + this.country;
 };
 
+// Globally initialize destinationsList
+let destinationsList = new DestinationsList();
+
 // Front End Logic
 $(document).ready(function () {
 	$('#formOne').submit(function () {
@@ -28,11 +31,14 @@ $(document).ready(function () {
 		let userCity = $('#userCity').val();
 		let userDate = $('#userDate').val();
 
-		// Initialize objects & push user input to those objects
-		let destinationsList = new DestinationsList();
+		// Initialize location object and push location to destinationsList
 		let location = new Location(userCountry, userCity, userDate);
 		destinationsList.addLocation(location);
+		console.log(destinationsList);
+		console.log('The variable this is equal to : ');
+		console.log(this);
 
+		// Append location
 		$('.userResults').append(
 			'<li>' + destinationsList.locations[0].country + '</li>'
 		);
