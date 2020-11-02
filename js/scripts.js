@@ -71,6 +71,11 @@ $(document).ready(function () {
 		$('.userResults').append(
 			'<li>' + destinationsList.locations[q].userDate + '</li>'
 		);
+
+		if (userCountry != '') {
+			$('.userResults').append('<img src="img/' + userCountry + '.jpg">');
+		}
+
 		q = q += 1;
 	});
 
