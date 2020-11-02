@@ -1,11 +1,11 @@
 // Back End Logic
 // Initialize Places() object
-function Places() {
+function Destinations() {
 	this.locations = [];
 }
 
 // Add a Location
-Places.prototype.addLocation = function (location) {
+Destinations.prototype.addLocation = function (location) {
 	this.locations.push(location);
 };
 
@@ -24,8 +24,15 @@ Location.prototype.country = function () {
 $(document).ready(function () {
 	$('#formOne').submit(function () {
 		event.preventDefault();
-		let userInput = $('#userInput').val();
-		$('.userResults').append(userInput);
-		numberTo(userInput);
+		let userCountry = $('#userCountry').val();
+		let userCity = $('#userCity').val();
+		let userDate = $('#userDate').val();
+
+		console.log(userCountry, userCity, userDate);
+
+		$('.userResults').append('<li>' + userCountry + '</li>');
+		$('.userResults').append('<li>' + userCity + '</li>');
+		$('.userResults').append('<li>' + userDate + '</li>');
+		// numberTo(userInput);
 	});
 });
