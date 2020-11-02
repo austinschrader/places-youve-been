@@ -1,12 +1,12 @@
-## Mr Rogoger's Neighborhood
+## Places You've Been
 
-\_Fun application program that takes a number from a user and returns a range of numbers from 0 to the users number with lines replaced.
+\_Fun application that allows you to enter the places that you've visited. When you enter an item it creates an object and appends it to the DOM.
 
 By Austin Schrader\_
 
 ## Description
 
-This project was created by Austin Schrader for the Friday project where we have to use arrays & looping. It was created using CSS, HTML, JavaScript, Git, GitHub, and Markdown, VSCode, Emmet, and Prettier.
+This project was created by Austin Schrader & Eric Endsley for Monday's Week 4 project where we are practicing Object Oriented Programming & looping. It was created using CSS, HTML, JavaScript, Git, GitHub, and Markdown, VSCode, Emmet, and Prettier.
 
 ## Setup
 
