@@ -31,10 +31,6 @@ function Location(userCountry, userCity, userDate) {
 	this.userDate = userDate;
 }
 
-Location.prototype.userCountry = function () {
-	return this.userCity + ' , ' + this.userCountry;
-};
-
 // Globally initialize destinationsList
 let destinationsList = new DestinationsList();
 
@@ -90,12 +86,32 @@ $(document).ready(function () {
 			let newUserCity = prompt('New city: ');
 			let newUserDate = prompt('New date: ');
 
-			console.log(destinationsList.locations[q - 1].userCountry);
-			console.log(destinationsList.locations[q - 1].userCity);
-			console.log(destinationsList.locations[q - 1].userDate);
 			delete destinationsList.locations[q - 1].userCountry;
 			delete destinationsList.locations[q - 1].userCity;
 			delete destinationsList.locations[q - 1].userDate;
+
+			destinationsList.locations[q - 1].userCountry = newUserCountry;
+			destinationsList.locations[q - 1].userCity = newUserCity;
+			destinationsList.locations[q - 1].userDate = newUserDate;
+
+			// Append Modified Data
+			$('.userResults')
+				.empty()
+				.append(
+					'<li>' +
+						destinationsList.locations[q - 1].userCountry +
+						'</li>' +
+						'<li>' +
+						destinationsList.locations[q - 1].userCity +
+						'</li>' +
+						'<li>' +
+						destinationsList.locations[q - 1].userDate +
+						'</li>'
+				);
+
+			console.log(destinationsList.locations[q - 1].userCountry);
+			console.log(destinationsList.locations[q - 1].userCity);
+			console.log(destinationsList.locations[q - 1].userDate);
 		});
 	}
 });
